@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    byebug
     @message = params[:message] if params[:message]
     @message ||= false
   end
