@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+  @message = params[:message] if params[:message]
+  @message ||= false
+end
+
   def user_params
         params.require(:user).permit(:name, :email, :password)
       end
