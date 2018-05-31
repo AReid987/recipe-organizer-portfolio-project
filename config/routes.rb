@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "static#home"
   resources :users
   resources :recipes
-  #get '/auth/facebook/callback', to: 'sessions#create'
+  get '/auth/facebook/callback', to: 'sessions#create_facebook'
   get "/signin", to: "sessions#new"
   post "/sessions/create", to: "sessions#create"
   delete "/signout", to: "sessions#destroy"
