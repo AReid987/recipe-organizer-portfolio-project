@@ -5,5 +5,5 @@
 <% if @recipe.user == current_user %>
   <%= link_to "Edit Your Recipe", edit_recipe_path(@recipe) %><br>
   <br>
-  <%= link_to "Delete This Recipe", recipe_path(@recipe), method: :delete %>
+  <%= link_to "Delete This Recipe", recipe_path(@recipe), method: :delete, data: {confirm: "Are You sure?"} %>
 <% end %>
