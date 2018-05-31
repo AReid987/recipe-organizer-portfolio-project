@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static#home"
-  resources :users
+  resources :users do
+    resources :recipes, only: [:show, :index]
+  end
   resources :recipes
   get '/auth/facebook/callback', to: 'sessions#create_facebook'
   get "/signin", to: "sessions#new"
