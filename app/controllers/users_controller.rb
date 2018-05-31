@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    #byebug
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
@@ -23,6 +22,9 @@ class UsersController < ApplicationController
     @message ||= false
   end
 
+  def edit
+  end 
+
   private
 
   def set_user
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
  end
 
   def user_params
-        params.require(:user).permit(:name, :username, :email, :password)
-      end
+    params.require(:user).permit(:name, :username, :email, :password)
+  end
 
 end
