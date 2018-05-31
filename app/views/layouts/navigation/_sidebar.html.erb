@@ -27,9 +27,11 @@
       <li class="active">
         <a class="btn btn-default btn-flat" <%= link_to "See All Recipes", recipes_path %></a>
       </li>
+    <% if current_user %>
       <li class="active">
         <a class="btn btn-default btn-flat" <%= link_to "See Your Recipes", user_recipes_path(current_user) %></a>
       </li>
+    <% end %>
       <li>
         <a class="btn btn-default btn-flat" <%= link_to "Create New Recipe", new_recipe_path %></a>
       </li>

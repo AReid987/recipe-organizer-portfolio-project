@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in, except: [:index]
 
   def index
     if params[:user_id]
@@ -57,4 +58,4 @@ private
     params.require(:recipe).permit(:name, :instructions)
   end
 
-end 
+end
