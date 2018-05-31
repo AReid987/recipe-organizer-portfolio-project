@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def create_facebook
-    @user = User.from_omniauth(env["omniauth.auth"])
+    @user = User.from_omniauth(auth)
     session[:user_id] = @user.id
     redirect_to user_path(@user), notice: "You are logged in with Facebook!"
   end
