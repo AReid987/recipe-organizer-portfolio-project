@@ -8,17 +8,17 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
+      log_user_in
       redirect_to user_path(@user), notice: "Sign in success!"
     else
-      flash[:notice] = "Incorrect username or password"
-      redirect_to signin_path
+
+      redirect_to signin_path, notice: "Incorrect username or password"
     end
   end
 
   def create_facebook
     @user = User.from_omniauth(auth)
-    session[:user_id] = @user.id
+    log_user_in
     redirect_to user_path(@user), notice: "You are logged in with Facebook!"
   end
 
