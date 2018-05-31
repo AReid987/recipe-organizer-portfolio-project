@@ -32,6 +32,16 @@ class RecipesController < ApplicationController
   def edit
   end
 
+  def update
+    respond_to do |format|
+      if @recipe.update(recipe_params.reject{|k,v| v.blank?})
+        format.html { redirect_to @recipe, notice: 'User was successfully updated.' }
+      else
+        format.html { render :edit, notice: 'Update unsuccessful' }
+      end
+    end
+  end
+
 end
 
 

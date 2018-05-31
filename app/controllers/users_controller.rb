@@ -33,7 +33,6 @@ class UsersController < ApplicationController
         format.html { render :edit, notice: 'Update unsuccessful' }
       end
     end
-
   end
 
   private
