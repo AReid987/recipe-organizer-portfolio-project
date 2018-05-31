@@ -10,7 +10,11 @@
 
   <div class="info">
     <p><strong>Name:</strong> <%= @user.name %></p>
-    <p><strong>Email:</strong> <%= @user.email %></p>
-    <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+    <% if @user.email %>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+    <% else %>
+      <p><%= link_to 'Add an email', edit_user_path(@user) %></p>
+    <% end %>
+    <p><%= link_to 'Edit your profile', edit_user_path(@user) %></p>
   </div>
 </div>
