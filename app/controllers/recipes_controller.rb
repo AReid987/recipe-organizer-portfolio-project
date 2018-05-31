@@ -9,6 +9,16 @@ class RecipesController < ApplicationController
   end
 
   def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to recipe_path(@recipe), notice: 'Recipe was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
 end
