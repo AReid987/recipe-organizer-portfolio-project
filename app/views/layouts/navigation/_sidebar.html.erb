@@ -25,27 +25,15 @@
     </form>
     <ul class="sidebar-menu">
       <li class="active">
-      <a class="btn btn-default btn-flat" <%= link_to "See All Recipes", recipes_path %></a>
+        <a class="btn btn-default btn-flat" <%= link_to "See All Recipes", recipes_path %></a>
+      </li>
+      <li class="active">
+        <a class="btn btn-default btn-flat" <%= link_to "See Your Recipes", recipes_path %></a>
       </li>
       <li>
-        <a href="#">
-        <span>Another Link</span>
-        </a>
+        <a class="btn btn-default btn-flat" <%= link_to "Create New Recipe", new_recipe_path %></a>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <span>Multilevel</span>
-          <i class="fa fa-angle-left pull-right">
-          </i></a>
-        <ul class="treeview-menu">
-          <li>
-            <a href="#"> Link in level 2</a>
-          </li>
-          <li>
-            <a href="#"> Link in level 2</a>
-          </li>
-        </ul>
-      </li>
+
     </ul>
   </div>
 </div>
