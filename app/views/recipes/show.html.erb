@@ -1,3 +1,7 @@
 <h1><%= @recipe.name %></h1>
 
 <p><%= @recipe.instructions %></p>
+
+<% if @recipe.user == current_user %>
+  <%= link_to "Edit Your Recipe", recipe_path(@recipe) %>
+<% end %>  
