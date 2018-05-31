@@ -1,5 +1,6 @@
+<% byebug %>
 <h1>All the Recipes!!<h1>
-  
+
 <% @recipes.each do |recipe| %>
   <h4><%= link_to "Recipe: #{recipe.name}, by #{recipe.user.name}", recipe_path(recipe) %></h4>
 <% end %>
