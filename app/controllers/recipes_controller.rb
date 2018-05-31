@@ -42,8 +42,10 @@ class RecipesController < ApplicationController
     end
   end
 
-end
-
+  def destroy
+    @recipe.destroy
+    redirect_to recipes_path, notice:  "Recipe deleted."
+  end
 
 private
 
@@ -54,3 +56,5 @@ private
   def recipe_params
     params.require(:recipe).permit(:name, :instructions)
   end
+
+end 

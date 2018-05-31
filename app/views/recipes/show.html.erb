@@ -3,5 +3,7 @@
 <p><%= @recipe.instructions %></p>
 
 <% if @recipe.user == current_user %>
-  <%= link_to "Edit Your Recipe", edit_recipe_path(@recipe) %>
+  <%= link_to "Edit Your Recipe", edit_recipe_path(@recipe) %><br>
+  <br>
+  <%= link_to "Delete This Recipe", recipe_path(@recipe), method: :delete %>
 <% end %>
