@@ -15,6 +15,11 @@
     <% else %>
       <p><%= link_to 'Add an email', edit_user_path(@user) %></p>
     <% end %>
+    <% if @user.username %>
+      <p><strong>Username:</strong> <%= @user.username %></p>
+    <% else %>
+      <p><%= link_to 'Add a username', edit_user_path(@user) %></p>
+    <% end %>
     <p><%= link_to 'Edit your profile', edit_user_path(@user) %></p>
   </div>
 </div>
