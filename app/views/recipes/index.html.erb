@@ -1,5 +1,8 @@
-<% byebug %>
-<h1>All the Recipes!!<h1>
+<% if params[:user_id].nil? %>
+  <h1>All the Recipes!!<h1>
+<% elsif !!params[:user_id] %>
+  <h1>All Your Recipes!!<h1>
+<% end %>
 
 <% @recipes.each do |recipe| %>
   <h4><%= link_to "Recipe: #{recipe.name}, by #{recipe.user.name}", recipe_path(recipe) %></h4>
