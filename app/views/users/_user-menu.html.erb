@@ -7,8 +7,8 @@
     <li class="user-header">
       <img class="img-circle" alt="User Image" src="http://placehold.it/160x160"> </img>
       <p>
-        <%= current_user.name %> - Web Developer
-        <small>Member since Nov. 2012</small>
+        <%= current_user.name %> - <%= current_user.email %>
+        <small>Member since <%= current_user.created_at.strftime("%B %Y") %></small>
       </p>
     </li>
     <li class="user-body">
