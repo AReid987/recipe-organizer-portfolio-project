@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'bootstrap-sass', '3.3.7'
 # Use CoffeeScript for .coffee assets and views
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
+
 gem 'coffee-rails', '~> 4.2'
 
 gem 'jquery-rails'
@@ -63,7 +65,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  
+
   gem "rails-erd"
 end
 
