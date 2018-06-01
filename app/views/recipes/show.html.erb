@@ -4,7 +4,7 @@
 <p><%= @recipe.instructions %></p>
 
 <% @recipe.ingredients.each do |ingredient| %>
-  <li><%= ingredient.name %></li>
+  <li><%= ingredient.name %> - </li>
 <% end %>
 <br>
 <% if @recipe.user == current_user %>

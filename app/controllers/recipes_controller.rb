@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+    byebug
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
 
@@ -58,7 +59,8 @@ private
     params.require(:recipe).permit(
       :name,
       :instructions,
-      ingredients_attributes: [:id, :name, :_destroy]
+      ingredients_attributes: [:name, :quantity, :_destroy],
+
     )
   end
 
