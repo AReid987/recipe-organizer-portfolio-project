@@ -59,7 +59,7 @@ private
     params.require(:recipe).permit(
       :name,
       :instructions,
-      ingredients_attributes: [:name, :quantity, :_destroy],
+      ingredients_attributes: [:name, :quantity, :_destroy]
 
     )
   end
