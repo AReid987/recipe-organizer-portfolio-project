@@ -21,6 +21,11 @@
     <%= f.label :instructions %><br>
     <%= f.text_area :instructions, class: "form-control" %></div>
 
+  <div class="form-group">
+    <%= f.simple_fields_for :ingredients do |ingredient| %>
+      <%= render 'ingredients_fields', :f => ingredient %>
+    <% end %></div>
+
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>
