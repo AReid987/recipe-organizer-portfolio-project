@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    byebug
+    
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
 
