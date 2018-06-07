@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    
+    #byebug
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
 
@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
   def update
     respond_to do |format|
       if @recipe.update(recipe_params.reject{|k,v| v.blank?})
-        format.html { redirect_to @recipe, notice: 'User was successfully updated.' }
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
       else
         format.html { render :edit, notice: 'Update unsuccessful' }
       end
@@ -59,9 +59,12 @@ private
     params.require(:recipe).permit(
       :name,
       :instructions,
-      ingredients_attributes: [:id, :name, :_destroy, quantities_attributes: [:id, :amount, :_destroy]]
-
+      ingredients_attributes: [:id, :name, :_destroy, items_attributes: [:id, :quantity, :_destroy]]
     )
+  end
+
+  def ingredient_quantity
+    items.first.quantity
   end
 
 end

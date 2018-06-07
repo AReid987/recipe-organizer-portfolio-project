@@ -9,9 +9,15 @@ class Recipe < ApplicationRecord
   def ingredients_attributes=(ingredient_attributes)
 
     ingredient_attributes.values.each do |ingredient_attribute|
-      
       ingredient = Ingredient.find_or_create_by(name: ingredient_attribute[:name])
       self.ingredients << ingredient
+
+      ingredient_attribute[:items_attributes].values.each do |item_attribute|
+        quantity = item_attribute[:quantity]
+        item = self.items.select {|i| i.ingredient_id == ingredient.id}.first
+        item.quantity = quantity
+        #byebug
+      end
     end
   end
 end

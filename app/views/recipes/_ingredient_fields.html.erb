@@ -2,11 +2,11 @@
     <%= f.label :ingredient %>
     <%= f.text_field :name, class: "form-input form-control" %>
 
-    <%= f.fields_for :quantities do |quantity| %>
-      <%= render 'quantity_fields', :f => quantity %>
+    <%= f.fields_for :items do |item| %>
+      <%= render 'item_fields', :f => item %>
     <% end %>
     <div class='links'>
-      <br><%= link_to_add_association 'add quantity', f, :quantities, class: "btn btn-default add_button" %>
+      <br><%= link_to_add_association 'add quantity', f, :items, class: "btn btn-default add_button" %>
     </div>
     <%= link_to_remove_association "remove ingredient", f, class: "form-button btn btn-default" %>
     <br>
