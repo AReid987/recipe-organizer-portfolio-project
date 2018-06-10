@@ -1,13 +1,10 @@
 <div class='nested-fields'>
     <%= f.label :ingredient %>
     <%= f.text_field :name, class: "form-input form-control" %>
-
-    <%= f.fields_for :items do |item| %>
-      <%= render 'item_fields', :f => item %>
+    <%= f.fields_for :items_attributes do |item_attribute| %>
+      <%= item_attribute.label :quantity %>
+      <%= item_attribute.text_field :quantity, class: "form-input form-control" %>
     <% end %>
-    <div class='links'>
-      <br><%= link_to_add_association 'add quantity', f, :items, class: "btn btn-default add_button" %>
-    </div>
     <%= link_to_remove_association "remove ingredient", f, class: "form-button btn btn-default" %>
     <br>
 </div>

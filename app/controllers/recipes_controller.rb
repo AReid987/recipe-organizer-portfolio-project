@@ -12,10 +12,10 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @ingredients = @recipe.ingredients
   end
 
   def create
-    #byebug
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
 
@@ -32,9 +32,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
+    #byebug
     respond_to do |format|
       if @recipe.update(recipe_params.reject{|k,v| v.blank?})
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
