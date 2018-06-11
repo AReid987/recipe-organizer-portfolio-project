@@ -2,8 +2,7 @@
     <%= f.label :ingredient %>
     <%= f.text_field :name, class: "form-input form-control" %>
     <%= f.fields_for :items_attributes do |item_attribute| %>
-      <%= item_attribute.label :quantity %>
-      <%= item_attribute.text_field :quantity, class: "form-input form-control" %>
+      <%= render 'item_attribute_fields', :f => item_attribute %>
     <% end %>
     <%= link_to_remove_association "remove ingredient", f, class: "form-button btn btn-default" %>
     <br>
