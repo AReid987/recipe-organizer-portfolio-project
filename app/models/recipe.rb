@@ -9,9 +9,14 @@ class Recipe < ApplicationRecord
   def ingredients_attributes=(ingredient_attributes)
 
     ingredient_attributes.values.each do |ingredient_attribute|
-      ingredient = Ingredient.find_or_create_by(name: ingredient_attribute['name'])
-      self.ingredients << ingredient unless self.ingredients.include?(ingredient)
-
+      #byebug
+      if ingredient_attribute[:_destroy] == '1'
+        ingredient = Ingredient.find_or_create_by(name: ingredient_attribute['name'])
+        ingredient.delete
+      else
+        ingredient = Ingredient.find_or_create_by(name: ingredient_attribute['name'])
+        self.ingredients << ingredient unless self.ingredients.include?(ingredient)
+      end
       ingredient_attribute[:items_attributes].values.each do |item_attribute|
         #byebug
         if self.items.any? do |item|

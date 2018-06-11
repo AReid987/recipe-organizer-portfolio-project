@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to recipe_path(@recipe), notice: 'Recipe was successfully created.' }
+        format.html { redirect_to user_recipe_path(current_user, @recipe), notice: 'Recipe was successfully created.' }
       else
         format.html { render :new }
       end
@@ -36,10 +36,9 @@ class RecipesController < ApplicationController
   end
 
   def update
-    #byebug
     respond_to do |format|
-      if @recipe.update(recipe_params.reject{|k,v| v.blank?})
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+      if @recipe.update(recipe_params)
+        format.html { redirect_to user_recipe_path(current_user, @recipe), notice: 'Recipe was successfully updated.' }
       else
         format.html { render :edit, notice: 'Update unsuccessful' }
       end

@@ -2,8 +2,9 @@ class User < ApplicationRecord
   has_secure_password
   has_many :recipes
 
+  scope :most_recipes, -> { joins(:recipes).group('id').order('count(recipes.id) DESC').limit(1) }
+  #scope :dry_clean_only, -> { joins(:washing_instructions).where('washing_instructions.dry_clean_only = ?', true) }
   validates :name, presence: true
-
   validates :username, uniqueness: true, :allow_nil => true, :allow_blank => true
 
   def self.from_omniauth(auth)

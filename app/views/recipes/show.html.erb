@@ -5,6 +5,7 @@
 
 <% @recipe.ingredients.each do |ingredient| %>
   <li><%= ingredient.name %> - <%= ingredient.items.first.quantity %></li>
+
 <% end %>
 <br>
 <% if @recipe.user == current_user %>
