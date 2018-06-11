@@ -1,0 +1,5 @@
+<h1><%= @user.name %> has the most recipes!</h1>
+
+<h4><% @user.recipes.each do |recipe| %></h4>
+  <li><%= link_to "#{recipe.name}", user_recipe_path(@user, recipe) %></li>
+<% end %>

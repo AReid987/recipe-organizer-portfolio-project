@@ -4,6 +4,7 @@
   <h1>All Your Recipes!!<h1>
 <% end %>
 
+<h4><%= link_to "See who has the most recipes!", users_most_recipes_path %></h4>
 <% @recipes.each do |recipe| %>
   <h4><%= link_to "Recipe: #{recipe.name}, by #{recipe.user.name}", user_recipe_path(current_user.id, recipe) %></h4>
 <% end %>

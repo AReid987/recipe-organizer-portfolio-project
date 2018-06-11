@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :recipes
 
   scope :most_recipes, -> { joins(:recipes).group('id').order('count(recipes.id) DESC').limit(1) }
-  #scope :dry_clean_only, -> { joins(:washing_instructions).where('washing_instructions.dry_clean_only = ?', true) }
+
   validates :name, presence: true
   validates :username, uniqueness: true, :allow_nil => true, :allow_blank => true
 
@@ -14,6 +14,7 @@ class User < ApplicationRecord
     user.name = auth.info.name unless user.name != nil
     user.password = SecureRandom.urlsafe_base64 unless user.password != nil
     user.save!
+    end
   end
-end
+
 end

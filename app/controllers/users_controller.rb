@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  #before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -35,11 +35,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def most_recipes
+    #byebug
+    @user = User.most_recipes.first
+    respond_to do |format|
+      format.html { render :most_recipes }
+    end
+  end
+
   private
 
   def set_user
-   @user = User.find(params[:id])
- end
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :username, :email, :password)
