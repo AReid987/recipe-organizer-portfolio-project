@@ -14,5 +14,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/AReid9
 ## License
 
 Available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-This README would normally document whatever steps are necessary to get the
-application up and running.
