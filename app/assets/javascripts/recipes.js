@@ -5,7 +5,7 @@ $(function(){
     let $ol = $('#recipes ol')
     $ol.text('')
     json.forEach(function(recipe){
-      $ol.append('<li>' + recipe.name + '</li>')
+      $ol.html('<li>' + recipe.name + '</li>')
     })
 
   })
