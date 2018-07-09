@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
   def index
     if params[:user_id]
       @recipes = User.find(params[:user_id]).recipes
+      render 'recipes/index', :layout => false
     else
       @recipes = Recipe.all
     end
