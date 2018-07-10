@@ -12,12 +12,17 @@ $(function(){
       '<h4><li>' + recipe.instructions + '</li></h4>')
       recipe.items.forEach(function(item){
         $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
-        //debugger
       })
-
     })
-
   })
     e.preventDefault()
   })
+
+  $("a.all_recipes").on("click", function(e){
+    $.get(this.href).success(function(json){
+      debugger 
+    })
+    e.preventDefault()
+  })
+
 })
