@@ -39,7 +39,24 @@ $(function(){
             json.items.forEach(function(item){
               $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
             })
-            $('#recipes').append(`<a href="#" class="js-next" data-id="${json.id}">next</a>`)
+            $('#recipes span').html(`<a href="#" class="js-next" data-id="${json.id}">next</a>`)
+            $('.js-next').on('click', function(e){
+              var nextId = parseInt($(".js-next").attr("data-id")) + 1
+              $.get(`/recipes/${nextId}`).success(function(json){
+                let $ol = $('#recipes ol')
+                $ol.text('')
+                let $ul = $('#recipes ul')
+                $ul.text('')
+                $ul.html('<h4><li>' + json.name + '</li></h4>' +
+                '<h4>Instructions: </h4>' +
+                '<h4><li>' + json.instructions + '</li></h4>')
+                json.items.forEach(function(item){
+                  $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
+                })
+                $('#recipes span').html(`<a href="#" class="js-next" data-id="${json.id}">next</a>`)
+              })
+              e.preventDefault()
+            })
           })
 
           e.preventDefault()
