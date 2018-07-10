@@ -39,7 +39,7 @@ $(function(){
             json.items.forEach(function(item){
               $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
             })
-            //debugger
+            $('#recipes').append(`<a href="#" class="js-next" data-id="${json.id}">next</a>`)
           })
 
           e.preventDefault()
