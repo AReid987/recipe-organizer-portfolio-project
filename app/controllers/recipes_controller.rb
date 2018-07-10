@@ -31,10 +31,11 @@ class RecipesController < ApplicationController
   end
 
   def show
+    render :json => @recipe, include: ['items', 'items.ingredient'] 
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    #@recipe = Recipe.find(params[:id])
   end
 
   def update
