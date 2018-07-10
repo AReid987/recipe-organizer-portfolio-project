@@ -5,7 +5,7 @@ $(function(){
     let $ul = $('#recipes ul')
     $ul.text('')
     let $ol = $('#recipes ol')
-    $ul.text('')
+    $ol.text('')
     json.forEach(function(recipe){
       $ul.html('<h4><li>' + recipe.name + '</li></h4>' +
       '<h4>Instructions: </h4>' +
@@ -29,7 +29,17 @@ $(function(){
         $ul.append(`<li><a href="/recipes/${recipe.id}" id="recipe${recipe.id}">${recipe.name}</a></li>`)
         $(`#recipe${recipe.id}`).on('click', function(e){
           $.get(this.href).success(function(json){
-            debugger
+            let $ol = $('#recipes ol')
+            $ol.text('')
+            let $ul = $('#recipes ul')
+            $ul.text('')
+            $ul.html('<h4><li>' + json.name + '</li></h4>' +
+            '<h4>Instructions: </h4>' +
+            '<h4><li>' + json.instructions + '</li></h4>')
+            json.items.forEach(function(item){
+              $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
+            })
+            //debugger
           })
 
           e.preventDefault()

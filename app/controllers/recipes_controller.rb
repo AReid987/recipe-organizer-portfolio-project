@@ -5,10 +5,10 @@ class RecipesController < ApplicationController
   def index
     if params[:user_id]
       @recipes = User.find(params[:user_id]).recipes
-      render :json => @recipes, include: ['items', 'items.ingredient']
+      render :json => @recipes, include: ['items', 'items.ingredient'], status: 200
     else
       @recipes = Recipe.all
-      render :json => @recipes, include: ['items', 'items.ingredient']
+      render :json => @recipes, include: ['items', 'items.ingredient'], status: 200
     end
   end
 
@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    render :json => @recipe, include: ['items', 'items.ingredient'] 
+    render :json => @recipe, include: ['items', 'items.ingredient']
   end
 
   def edit
