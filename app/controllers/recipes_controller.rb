@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
     if params[:user_id]
       @recipes = User.find(params[:user_id]).recipes
       #render :layout => false
-      render :json => @recipes
+      render :json => @recipes, include: ['items', 'items.ingredient']
     else
       @recipes = Recipe.all
     end
