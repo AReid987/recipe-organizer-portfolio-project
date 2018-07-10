@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
       render :json => @recipes, include: ['items', 'items.ingredient']
     else
       @recipes = Recipe.all
-      render :json => @recipes
+      render :json => @recipes, include: ['items', 'items.ingredient']
     end
   end
 

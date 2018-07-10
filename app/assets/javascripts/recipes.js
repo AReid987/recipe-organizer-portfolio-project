@@ -20,7 +20,14 @@ $(function(){
 
   $("a.all_recipes").on("click", function(e){
     $.get(this.href).success(function(json){
-      debugger 
+      let $ol = $('#recipes ol')
+      $ol.text('')
+      let $ul = $('#recipes ul')
+      $ul.text('')
+      json.forEach(function(recipe){
+        //debugger
+        $ul.append(`<li><a href="/recipes/${recipe.id}">${recipe.name}</a></li>`)
+      })
     })
     e.preventDefault()
   })
