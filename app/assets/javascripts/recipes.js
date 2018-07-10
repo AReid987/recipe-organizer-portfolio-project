@@ -26,7 +26,15 @@ $(function(){
       $ul.text('')
       json.forEach(function(recipe){
         //debugger
-        $ul.append(`<li><a href="/recipes/${recipe.id}">${recipe.name}</a></li>`)
+        $ul.append(`<li><a href="/recipes/${recipe.id}" id="recipe${recipe.id}">${recipe.name}</a></li>`)
+        $(`#recipe${recipe.id}`).on('click', function(e){
+          $.get(this.href).success(function(json){
+            debugger
+          })
+
+          e.preventDefault()
+        })
+
       })
     })
     e.preventDefault()
