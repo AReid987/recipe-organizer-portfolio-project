@@ -9,6 +9,13 @@ $(function(){
     e.preventDefault()
   })
 
+  $("a.new_recipe").on("click", function(e){
+    $.get(this.href).success(function(json){
+      $('#recipe_form').html('<form><label>name</label><br><input type="text"></input><br><label>instructions:</label><br><input type="text"></input><br><input type="submit"></form>')
+    })
+    e.preventDefault()
+  })
+
 })
 function getUserRecipes(link){
   $.get(link.href).success(function(json){
@@ -33,6 +40,8 @@ function getAllRecipes(link){
     $ol.text('')
     let $ul = $('#recipes ul')
     $ul.text('')
+    let $span = $('#recipes span')
+    $span.text('')
     json.forEach(function(recipe){
       $ul.append(`<li><a href="/recipes/${recipe.id}" id="recipe${recipe.id}">${recipe.name}</a></li>`)
       $(`#recipe${recipe.id}`).on('click', function(e){
@@ -56,24 +65,30 @@ function getOneRecipe(link){
     json.items.forEach(function(item){
       $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
     })
-    $('#recipes span').html(`<a href="#" class="js-next" data-id="${json.id}">next</a>`)
+    //debugger
+    $('#recipes span').html(`<a href="/recipes/${json.id}" class="js-next" data-id="${json.id}">next</a>`)
     $('.js-next').on('click', function(e){
       var nextId = parseInt($(".js-next").attr("data-id")) + 1
-      $.get(`/recipes/${nextId}`).success(function(json){
-        let $ol = $('#recipes ol')
-        $ol.text('')
-        let $ul = $('#recipes ul')
-        $ul.text('')
-        $ul.html('<h4><li>' + json.name + '</li></h4>' +
-        '<h4>Instructions: </h4>' +
-        '<h4><li>' + json.instructions + '</li></h4>')
-        json.items.forEach(function(item){
-          $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
-        })
-        $('#recipes span').html(`<a href="#" class="js-next" data-id="${json.id}">next</a>`)
-      })
+      getNextRecipe(nextId)
       e.preventDefault()
     })
   })
 
+}
+
+function getNextRecipe(nextId){
+  //debugger
+  $.get(`/recipes/${nextId}`).success(function(json){
+    let $ol = $('#recipes ol')
+    $ol.text('')
+    let $ul = $('#recipes ul')
+    $ul.text('')
+    $ul.html('<h4><li>' + json.name + '</li></h4>' +
+    '<h4>Instructions: </h4>' +
+    '<h4><li>' + json.instructions + '</li></h4>')
+    json.items.forEach(function(item){
+      $ol.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
+    })
+     $(".js-next").attr("data-id", json["id"]);
+  })
 }
