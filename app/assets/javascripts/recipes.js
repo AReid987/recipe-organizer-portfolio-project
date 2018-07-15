@@ -9,14 +9,30 @@ $(function(){
     e.preventDefault()
   })
 
-  $("a.new_recipe").on("click", function(e){
-    $.get(this.href).success(function(json){
-      $('#recipe_form').html('<form><label>name</label><br><input type="text"></input><br><label>instructions:</label><br><input type="text"></input><br><input type="submit"></form>')
+  $("#new_recipe").on("submit", function(e){
+    let url = this.action
+    data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'recipe': {
+        'name': $("#recipe_name").val(),
+        'instructions': $("#recipe_instructions").val()
+      }
+    }
+
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(response){
+        debugger
+      }
     })
     e.preventDefault()
+    
   })
 
 })
+
 function getUserRecipes(link){
   $.get(link.href).success(function(json){
     let $ul = $('#recipes ul')
@@ -36,6 +52,7 @@ function getUserRecipes(link){
 
 function getAllRecipes(link){
   $.get(link.href).success(function(json){
+    debugger
     let $ol = $('#recipes ol')
     $ol.text('')
     let $ul = $('#recipes ul')

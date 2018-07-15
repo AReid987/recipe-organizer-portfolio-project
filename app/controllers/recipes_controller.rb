@@ -17,20 +17,14 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @ingredients = @recipe.ingredients
-    render :json => @recipe, include: [:ingredients]
+    @user = current_user
+    #render :json => @recipe, include: ['items', 'ingredients']
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
-
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to user_recipe_path(current_user, @recipe), notice: 'Recipe was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    @user = current_user
+    render 'recipes/show', :layout => false
   end
 
   def show
