@@ -11,6 +11,7 @@ $(function(){
 
   $("#new_recipe").on("submit", function(e){
     let url = this.action
+    //debugger
     data = {
       'authenticity_token': $("input[name='authenticity_token']").val(),
       'recipe': {
@@ -24,11 +25,14 @@ $(function(){
       url: url,
       data: data,
       success: function(response){
-        debugger
+        $("#recipe_name").val("")
+        $("#recipe_instructions").val("")
+        let $recipeContainer = $("#recipe_container")
+        $recipeContainer.append(response)
       }
     })
     e.preventDefault()
-    
+
   })
 
 })
