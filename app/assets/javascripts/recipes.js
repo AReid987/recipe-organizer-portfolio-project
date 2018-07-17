@@ -1,5 +1,6 @@
 $(function(){
   $("a.user_recipes").on("click", function(e){
+    debugger
     getUserRecipes(this)
     e.preventDefault()
   })
@@ -9,35 +10,10 @@ $(function(){
     e.preventDefault()
   })
 
-  $("#new_recipe").on("submit", function(e){
-    let url = this.action
-    //debugger
-    data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'recipe': {
-        'name': $("#recipe_name").val(),
-        'instructions': $("#recipe_instructions").val()
-      }
-    }
-
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: data,
-      success: function(response){
-        $("#recipe_name").val("")
-        $("#recipe_instructions").val("")
-        let $recipeContainer = $("#recipe_container")
-        $recipeContainer.append(response)
-      }
-    })
-    e.preventDefault()
-
-  })
-
 })
 
 function getUserRecipes(link){
+  debugger
   $.get(link.href).success(function(json){
     let $ul = $('#recipes ul')
     $ul.text('')

@@ -2,8 +2,6 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :require_logged_in, except: [:index]
 
-
-
   def index
     if params[:user_id]
       @recipes = User.find(params[:user_id]).recipes
@@ -17,18 +15,25 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @ingredients = @recipe.ingredients
-    @user = current_user
-    #render :json => @recipe, include: ['items', 'ingredients']
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @user = current_user
-    render 'recipes/show', :layout => false
+    @recipe.user = current_user
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to user_recipe_path(current_user, @recipe), notice: 'Recipe was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def show
-    render :json => @recipe, include: ['items', 'items.ingredient']
+    respond_to do |format|
+      format.html { render :show }
+      format.json {render :json => @recipe, include: ['items', 'items.ingredient']}
+    end
   end
 
   def edit
