@@ -5,10 +5,8 @@ class RecipesController < ApplicationController
   def index
     if params[:user_id]
       @recipes = User.find(params[:user_id]).recipes
-      render :json => @recipes, include: ['items', 'items.ingredient'], status: 200
     else
       @recipes = Recipe.all
-      render :json => @recipes, include: ['items', 'items.ingredient'], status: 200
     end
   end
 
@@ -20,6 +18,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
+
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to user_recipe_path(current_user, @recipe), notice: 'Recipe was successfully created.' }
@@ -30,10 +29,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html { render :show }
-      format.json {render :json => @recipe, include: ['items', 'items.ingredient']}
-    end
+    #render :json => @recipe, include: ['items', 'items.ingredient']
   end
 
   def edit
