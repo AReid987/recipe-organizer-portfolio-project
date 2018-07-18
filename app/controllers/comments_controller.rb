@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_recipe
 
   def index
-    @comments = Recipe.comments
+    @comments = @recipe.comments
   end
 
   private
