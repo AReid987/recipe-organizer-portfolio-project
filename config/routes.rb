@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :recipes
   end
-  resources :recipes
+  resources :recipes do
+    resources :comments
+  end
 
   get '/auth/facebook/callback', to: 'sessions#create_facebook'
   get "/signin", to: "sessions#new"
