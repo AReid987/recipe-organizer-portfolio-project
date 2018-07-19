@@ -1,3 +1,17 @@
+$(function(){
+  $("a.load_comments").on("click", function(e){
+    alert("clicked")
+    e.preventDefault()
+  })
+})
+
+
+
+
+
+
+
+
 // $(function(){
 //   $("a.user_recipes").on("click", function(e){
 //
