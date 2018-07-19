@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @recipe.comments
+    #@comment = @recipe.comments.build
     render :json => @comments
   end
 

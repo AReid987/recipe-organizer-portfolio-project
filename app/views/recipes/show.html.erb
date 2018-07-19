@@ -15,7 +15,7 @@
   </ol>
 </div>
 
-<%= form_for(@comment) do |f| %>
+<%= form_for([@recipe, @comment]) do |f| %>
 <% end %>
 
 <% if @recipe.user == current_user %>
