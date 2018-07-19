@@ -15,6 +15,9 @@
   </ol>
 </div>
 
+<%= form_for(@comment) do |f| %>
+<% end %>
+
 <% if @recipe.user == current_user %>
   <%= link_to "Edit Your Recipe", edit_recipe_path(@recipe) %><br>
   <br>
