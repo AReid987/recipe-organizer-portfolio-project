@@ -16,6 +16,8 @@
 </div>
 
 <%= form_for([@recipe, @comment]) do |f| %>
+  <%= f.text_area :content %>
+  <p><%= f.submit %></p>
 <% end %>
 
 <% if @recipe.user == current_user %>
