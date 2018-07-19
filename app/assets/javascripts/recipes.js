@@ -1,7 +1,12 @@
 $(function(){
   $("a.load_comments").on("click", function(e){
     $.get(this.href).success(function(json){
-      debugger
+      let $comments = $("#comments_div ol")
+      $comments.text('')
+      
+      json.forEach(function(comment){
+        $comments.append('<li>' + comment.content + '</li>')
+      })
     })
     e.preventDefault()
   })
