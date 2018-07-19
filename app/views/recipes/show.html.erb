@@ -10,6 +10,9 @@
 <br>
 <%= link_to "Load Comments", recipe_comments_path(@recipe), class: "load_comments" %>
 
+<div id="comments_div">
+</div>
+
 <% if @recipe.user == current_user %>
   <%= link_to "Edit Your Recipe", edit_recipe_path(@recipe) %><br>
   <br>
