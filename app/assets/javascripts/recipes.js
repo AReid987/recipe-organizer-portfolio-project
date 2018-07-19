@@ -1,6 +1,8 @@
 $(function(){
   $("a.load_comments").on("click", function(e){
-    alert("clicked")
+    $.get(this.href).success(function(json){
+      debugger
+    })
     e.preventDefault()
   })
 })
