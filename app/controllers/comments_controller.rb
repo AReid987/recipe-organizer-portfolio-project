@@ -3,8 +3,17 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @recipe.comments
-    #@comment = @recipe.comments.build
+    #
     render :json => @comments
+  end
+
+  def create
+    @comment = @recipe.comments.build(comment_params)
+    if @comment.save
+      redirect_to @recipe
+    else
+      render 'recipes/show'
+    end 
   end
 
   private
@@ -12,4 +21,9 @@ class CommentsController < ApplicationController
   def set_recipe
     @recipe = Recipe.find(params[:recipe_id])
   end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
+
 end
