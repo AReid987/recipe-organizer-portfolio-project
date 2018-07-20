@@ -26,7 +26,9 @@ $(function(){
       url: url,
       data: data,
       success: function(response){
-        debugger
+        let $comments = $("#comments_div ol")
+        $comments.append('<li>' + response.content+ '</li>')
+        //debugger
       }
     })
     e.preventDefault()
