@@ -3,11 +3,16 @@ $(function(){
     $.get(this.href).success(function(json){
       let $comments = $("#comments_div ol")
       $comments.text('')
-      
+
       json.forEach(function(comment){
         $comments.append('<li>' + comment.content + '</li>')
       })
     })
+    e.preventDefault()
+  })
+
+  $("#new_comment").on("submit", function(e){
+    alert("submitted")
     e.preventDefault()
   })
 })
