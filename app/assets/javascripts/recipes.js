@@ -12,7 +12,23 @@ $(function(){
   })
 
   $("#new_comment").on("submit", function(e){
-    alert("submitted")
+    //debugger
+    url = this.action
+    data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'comment': {
+        'content': $("#comment_content").val()
+      }
+    }
+
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(response){
+        debugger
+      }
+    })
     e.preventDefault()
   })
 })

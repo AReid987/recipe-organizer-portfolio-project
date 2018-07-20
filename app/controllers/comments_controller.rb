@@ -10,10 +10,10 @@ class CommentsController < ApplicationController
   def create
     @comment = @recipe.comments.build(comment_params)
     if @comment.save
-      redirect_to @recipe
+      render :json => @comment
     else
       render 'recipes/show'
-    end 
+    end
   end
 
   private

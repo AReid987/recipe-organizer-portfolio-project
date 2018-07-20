@@ -30,6 +30,7 @@ class RecipesController < ApplicationController
 
   def show
     @comment = @recipe.comments.build
+    
     #render :json => @recipe, include: ['items', 'items.ingredient']
   end
 
