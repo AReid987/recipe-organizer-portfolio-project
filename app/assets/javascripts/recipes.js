@@ -40,9 +40,8 @@ $(function(){
     $ingredients.html('')
     json.items.forEach(function(item){
       $ingredients.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
-      //debugger
     })
-
+    $(".js-next").attr("data-id", json.id)
   }
 
   $(".js-next").on("click", function(e){
