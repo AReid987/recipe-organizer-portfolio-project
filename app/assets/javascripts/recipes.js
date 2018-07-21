@@ -28,11 +28,19 @@ $(function(){
         $("#comment_content").val('')
         let $comments = $("#comments_div ol")
         $comments.append('<li>' + response.content+ '</li>')
-        //debugger
       }
     })
     e.preventDefault()
   })
+
+  $(".js-next").on("click", function(e){
+    let id = $(".js-next").attr("data-id")
+    $.get("/recipes/" + id + "/next", function(json){
+      debugger
+    })
+    e.preventDefault()
+  })
+
 })
 
 

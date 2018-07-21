@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :next_recipe]
   before_action :require_logged_in, except: [:index]
 
   def index
@@ -54,8 +54,7 @@ class RecipesController < ApplicationController
   end
 
   def next_recipe
-    @recipe = Recipe.find(params[:id])
-    @next_recipe = @recipe.next
+    @next_recipe = Recipe.find(@recipe.id + 1)
     render :json => @next_recipe
   end
 
