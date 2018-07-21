@@ -4,10 +4,13 @@
 <p class="recipeInstructions"><%= @recipe.instructions %></p>
 
 <div class="recipeIngredients">
+  <ul>
 <% @recipe.ingredients.each do |ingredient| %>
   <li><%= ingredient.name %> - <%= ingredient.items.first.quantity %></li>
 <% end %>
+  </ul>
 </div>
+
 <br>
 <a href="#" class="js-next btn btn-primary" data-id="<%= @recipe.id%>">Next Recipe</a><br>
 <br>

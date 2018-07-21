@@ -34,7 +34,15 @@ $(function(){
   })
 
   function showRecipe(json){
-    debugger
+    $(".recipeName").text(json.name)
+    $(".recipeInstructions").text(json.instructions)
+    let $ingredients = $('.recipeIngredients ul')
+    $ingredients.html('')
+    json.items.forEach(function(item){
+      $ingredients.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
+      //debugger
+    })
+
   }
 
   $(".js-next").on("click", function(e){
