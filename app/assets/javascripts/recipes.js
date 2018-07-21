@@ -43,6 +43,7 @@ $(function(){
     })
     $(".js-next").attr("data-id", json.id)
     $('a.load_comments').attr("href", "/recipes/" + json.id + "/comments")
+    $("#comments_div").empty()
   }
 
   $(".js-next").on("click", function(e){
