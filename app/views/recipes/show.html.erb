@@ -5,8 +5,9 @@
 
 <% @recipe.ingredients.each do |ingredient| %>
   <li><%= ingredient.name %> - <%= ingredient.items.first.quantity %></li>
-
 <% end %>
+<br>
+<a href="#" class="js-next btn btn-primary" data-id="<%= @recipe.id%>">Next Recipe</a><br>
 <br>
 <%= link_to "Load Comments", recipe_comments_path(@recipe), class: "load_comments" %>
 
