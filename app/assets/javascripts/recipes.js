@@ -42,8 +42,9 @@ $(function(){
       $ingredients.append('<li>' + item.ingredient.name + ' - ' + item.quantity + '</li>')
     })
     $(".js-next").attr("data-id", json.id)
-    $('a.load_comments').attr("href", "/recipes/" + json.id + "/comments")
-    $("#comments_div").empty()
+    $("a.load_comments").attr("href", "/recipes/" + json.id + "/comments")
+    $("#comments_div ol").empty()
+    $("#new_comment").attr("action", "/recipes/" + json.id + "/comments")
   }
 
   $(".js-next").on("click", function(e){
