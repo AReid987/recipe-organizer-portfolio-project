@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
 
   def next_recipe
     @next_recipe = Recipe.find(@recipe.id + 1)
-    render :json => @next_recipe
+    render :json => @next_recipe, include: ['items', 'items.ingredient']
   end
 
 private

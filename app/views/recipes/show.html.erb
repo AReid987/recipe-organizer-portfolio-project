@@ -1,11 +1,13 @@
-<h1><%= @recipe.name %></h1>
+<h1 class="recipeName"><%= @recipe.name %></h1>
 
 <h4>Instructions:</h4>
-<p><%= @recipe.instructions %></p>
+<p class="recipeInstructions"><%= @recipe.instructions %></p>
 
+<div class="recipeIngredients">
 <% @recipe.ingredients.each do |ingredient| %>
   <li><%= ingredient.name %> - <%= ingredient.items.first.quantity %></li>
 <% end %>
+</div>
 <br>
 <a href="#" class="js-next btn btn-primary" data-id="<%= @recipe.id%>">Next Recipe</a><br>
 <br>

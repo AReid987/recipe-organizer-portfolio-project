@@ -27,16 +27,20 @@ $(function(){
       success: function(response){
         $("#comment_content").val('')
         let $comments = $("#comments_div ol")
-        $comments.append('<li>' + response.content+ '</li>')
+        $comments.append('<li>' + response.content + '</li>')
       }
     })
     e.preventDefault()
   })
 
+  function showRecipe(json){
+    debugger
+  }
+
   $(".js-next").on("click", function(e){
     let id = $(".js-next").attr("data-id")
     $.get("/recipes/" + id + "/next", function(json){
-      debugger
+      showRecipe(json)
     })
     e.preventDefault()
   })
