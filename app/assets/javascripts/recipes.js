@@ -12,7 +12,6 @@ $(function(){
   })
 
   $("#new_comment").on("submit", function(e){
-    //debugger
     url = this.action
     data = {
       'authenticity_token': $("input[name='authenticity_token']").val(),
@@ -26,6 +25,7 @@ $(function(){
       url: url,
       data: data,
       success: function(response){
+        $("#comment_content").val('')
         let $comments = $("#comments_div ol")
         $comments.append('<li>' + response.content+ '</li>')
         //debugger

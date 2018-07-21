@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
 
   def show
     @comment = @recipe.comments.build
-    
+
     #render :json => @recipe, include: ['items', 'items.ingredient']
   end
 
@@ -51,6 +51,12 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     redirect_to recipes_path, notice:  "Recipe deleted."
+  end
+
+  def next_recipe
+    @recipe = Recipe.find(params[:id])
+    @next_recipe = @recipe.next
+    render :json => @next_recipe
   end
 
 private

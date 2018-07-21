@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get '/recipes/:id/next', to: 'recipes#next_recipe'
+
   get '/auth/facebook/callback', to: 'sessions#create_facebook'
   get "/signin", to: "sessions#new"
   post "/sessions/create", to: "sessions#create"
