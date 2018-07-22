@@ -12,18 +12,10 @@ $(function(){
   })
 
   $("#new_comment").on("submit", function(e){
-    url = this.action
-    data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'comment': {
-        'content': $("#comment_content").val()
-      }
-    }
-
     $.ajax({
       type: "POST",
-      url: url,
-      data: data,
+      url: this.action,
+      data: $(this).serialize(),
       success: function(response){
         $("#comment_content").val('')
         let $comments = $("#comments_div ol")
