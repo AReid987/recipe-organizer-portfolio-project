@@ -1,3 +1,8 @@
+function Comment(attributes){
+  this.id = attributes.id;
+  this.content = attributes.content
+}
+
 $(function(){
   $("a.load_comments").on("click", function(e){
     $.get(this.href).success(function(json){
@@ -18,8 +23,12 @@ $(function(){
       data: $(this).serialize(),
       success: function(response){
         $("#comment_content").val('')
-        let $comments = $("#comments_div ol")
-        $comments.append('<li>' + response.content + '</li>')
+
+        let comment = new Comment(response)
+        debugger
+        //let commentLi = comment.renderLi()
+        // let $comments = $("#comments_div ol")
+        // $comments.append('<li>' + response.content + '</li>')
       }
     })
     e.preventDefault()
