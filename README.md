@@ -1,7 +1,12 @@
-# rails-portfolio-project - Recipe Organizer
+## rails-portfolio-project - Recipe Organizer
 Ruby version 2.4.1
 
-Rails versio 5.2.0
+Rails version 5.2.0
+
+## Description
+
+Simple app for creating recipes
+
 ## Usage
 
 After cloning the repo, run bundle to install dependencies. To migrate your local database, run rake db:migrate. To start the application on your machine, run 'rails s' from the application root.  In a browser, go to http://localhost:3000/ to begin.
