@@ -3,6 +3,10 @@ function Comment(attributes){
   this.content = attributes.content
 }
 
+Comment.prototype.renderLi = function(){
+
+}
+
 $(function(){
   $("a.load_comments").on("click", function(e){
     $.get(this.href).success(function(json){
