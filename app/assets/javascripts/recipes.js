@@ -1,12 +1,3 @@
-function Comment(attributes){
-  this.id = attributes.id;
-  this.content = attributes.content
-}
-
-Comment.prototype.renderLi = function(){
-
-}
-
 $(function(){
   $("a.load_comments").on("click", function(e){
     $.get(this.href).success(function(json){
@@ -29,8 +20,7 @@ $(function(){
         $("#comment_content").val('')
 
         let comment = new Comment(response)
-        debugger
-        //let commentLi = comment.renderLi()
+        comment.renderLi()
         // let $comments = $("#comments_div ol")
         // $comments.append('<li>' + response.content + '</li>')
       }
@@ -62,7 +52,17 @@ $(function(){
 
 })
 
+function Comment(attributes){
+  this.id = attributes.id;
+  this.content = attributes.content
+  this.user = attributes.user
+}
 
+Comment.prototype.renderLi = function(){
+
+  let html = '<li>' + this.user.name + ' said: ' + this.content + '</li>'
+  $("#comments_div ol").append(html)
+}
 
 
 
