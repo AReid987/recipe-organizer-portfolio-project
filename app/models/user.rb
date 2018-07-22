@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :recipes
+  has_many :comments
 
   scope :most_recipes, -> { joins(:recipes).group('id').order('count(recipes.id) DESC').limit(1) }
 

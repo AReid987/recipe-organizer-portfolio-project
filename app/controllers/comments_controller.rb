@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @recipe.comments.build(comment_params)
+    @comment = current_user.comments.new(comment_params)
+    binding.pry
+    @comment.recipe = @recipe
     if @comment.save
       render :json => @comment
     else
